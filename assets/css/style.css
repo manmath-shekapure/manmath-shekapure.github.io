@@ -296,6 +296,15 @@ h6 {
   }
 }
 
+
+.about-me img {
+  width: 100%;
+  max-width: 300px;     /* image ला limit */
+  height: auto;
+  border-radius: 10px;  /* rounded look हवा असल्यास */
+  object-fit: cover;
+}
+
 .navbar-mobile {
   position: fixed;
   overflow: hidden;
