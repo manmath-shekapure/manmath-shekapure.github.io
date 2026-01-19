@@ -17,7 +17,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #100f0f url("/manmath-shekapure.github.io/assets/img/profile\ img\ background.png") top right no-repeat;
+  background: #100f0f url("/assets/img/profile\ img\ background.png") top right no-repeat;
   filter: brightness(20%);
   background-size: cover;
   left: 0;
