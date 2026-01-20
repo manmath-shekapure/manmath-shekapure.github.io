@@ -1,0 +1,43 @@
+body{
+    background-color: #f4f4f4;
+}
+.container{
+    width: 90%;
+    margin: auto;
+
+}
+.container button{
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+}
+.main{
+    display: flex;
+}
+.products{
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    
+}
+.product{
+    background-color: #ffff;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.product img{
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+
+}
+.cart{
+    width: 30%;
+    background-color: #fff;
+    padding: 10px;
+}
+table{
+    width: 100%;
+    border: 1px solid #ddd;
+}
