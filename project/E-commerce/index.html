@@ -137,7 +137,12 @@
       <img src="/project/E-commerce/imgs/women bags.jpg">
       <p>womens-bags</p>
     </div>
-
+<script>
+  function loadProduct(category) {
+    localStorage.setItem("selectedCategory", category);
+    window.location.href = "shop.html";
+  }
+</script>
 
   <script src="/project/E-commerce/bootstrap.bundle.js"></script>
 </body>
