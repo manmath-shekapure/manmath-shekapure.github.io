@@ -1,7 +1,6 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +15,7 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
 
-      <a class="navbar-brand" href="#">MyShop</a>
+      <a class="navbar-brand" href="./index.html">MyShop</a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPremium">
         <span class="navbar-toggler-icon"></span>
@@ -27,34 +26,31 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Home</a>
-          </li>
-
-          <li class="nav-item">
             <a class="nav-link active" href="shop.html">Shop</a>
           </li>
-          
+
 
         </ul>
 
       </div>
     </div>
   </nav>
-   
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="/project/E-commerce/imgs/1764.jpg" class="d-block w-100" alt="...">
+
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel"
+    class="col-12 col-sm-3 col-md-6 col-lg-12">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/project/E-commerce/imgs/1764.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/project/E-commerce/imgs/5517487.jpg" class="d-block w-100" alt="...">
+      </div>
+
     </div>
-    <div class="carousel-item">
-      <img src="/project/E-commerce/imgs/5517487.jpg" class="d-block w-100" alt="...">
-    </div>
-    
   </div>
-</div>
 
 
-    
+
 
   <div class="cat-grid">
 
@@ -84,7 +80,7 @@
     </div>
 
     <div class="cat-box" onclick="loadProduct('kitchen-accessories'); return false;">
-      <img src="/project/E-commerce/imgs/food img.webp">
+      <img src="/project/E-commerce/imgs/hoome decoration.jpg">
       <p>Kitchen Accessories</p>
     </div>
 
@@ -137,17 +133,18 @@
       <img src="/project/E-commerce/imgs/women bags.jpg">
       <p>womens-bags</p>
     </div>
-<script>
-  function loadProduct(category) {
-    localStorage.setItem("selectedCategory", category);
-    window.location.href = "shop.html";
-  }
-</script>
+    <script>
+      function loadProduct(category) {
+        localStorage.setItem("selectedCategory", category);
+        window.location.href = "shop.html";
+      }
+    </script>
 
-  <script src="/project/E-commerce/bootstrap.bundle.js"></script>
+
+    <script src="js/bootstrap.bundle.js"></script>
+
+
+    <script src="script.js"></script>
 </body>
-</html>
-   
-    <script src="/project/E-commerce/app.js"></script>
-</body>
+
 </html>
