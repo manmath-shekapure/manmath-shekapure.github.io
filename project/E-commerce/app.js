@@ -1,152 +1,179 @@
-
-const productList = document.getElementById("productList");
+let productList = document.getElementById("productList");
 const pagination = document.getElementById("pagination");
 const searchInput = document.getElementById("searchInput");
-const searchBtn = document.getElementById("searchBtn");
+
 const cartBody = document.getElementById("cartBody");
 const cartTotal = document.getElementById("cartTotal");
 const cartCount = document.getElementById("cartCount");
-const productDetails = document.getElementById("productDetails");
+
+const filterButtons = document.querySelectorAll(".filter-option");
+const filterBox = document.getElementById("filterBox");
+
+const categorySelect = document.getElementById("filterCategory");
+const brandSelect = document.getElementById("filterBrand");
+const priceSelect = document.getElementById("filterPrice");
+const offerSelect = document.getElementById("filterOffer");
 
 let allProducts = [];
 let filteredProducts = [];
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let page = 1;
 let limit = 12;
 
 
-function isLoggedIn() {
-  return localStorage.getItem("loggedIn") === "true";
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const type = btn.getAttribute("data-filter");
+    showFilter(type);
+  });
+});
+
+function showFilter(type) {
+  filterBox.style.display = "block";
+
+  document.querySelectorAll(".filter-section").forEach(s => s.style.display = "none");
+
+  if (type === "category") categorySelect.parentElement.style.display = "block";
+  if (type === "brand") brandSelect.parentElement.style.display = "block";
+  if (type === "price") priceSelect.parentElement.style.display = "block";
+  if (type === "offer") offerSelect.parentElement.style.display = "block";
 }
 
 
-fetch("https://dummyjson.com/products?limit=100")
-  .then((res) => res.json())
-  .then((data) => {
-    allProducts = data.products;
-    filteredProducts = [...allProducts];
-    renderUI();
+document.getElementById("clearFilters")?.addEventListener("click", () => {
+  filterBox.style.display = "none";
+
+  categorySelect.value = "All";
+  brandSelect.value = "All";
+  priceSelect.value = "All";
+  offerSelect.value = "All";
+
+  filteredProducts = [...allProducts];
+  page = 1;
+  renderUI();
+});
+
+
+fetch("https://dummyjson.com/products/categories")
+  .then(res => res.json())
+  .then(categories => {
+    categorySelect.innerHTML = `<option value="All">All</option>`;
+
+    categories.forEach(cat => {
+      categorySelect.innerHTML += `
+        <option value="${cat.slug}">${cat.name}</option>
+      `;
+    });
   });
 
 
-function applySearch() {
-  const keyword = searchInput.value.trim().toLowerCase();
-  filteredProducts = allProducts.filter((p) =>
+fetch("https://dummyjson.com/products?limit=0")
+  .then(res => res.json())
+  .then(data => {
+    allProducts = data.products;
+    filteredProducts = [...allProducts];
+    renderUI();
+
+    loadBrands(data.products);
+  });
+
+
+
+function loadBrands(products) {
+  let brands = [...new Set(products.map(p => p.brand))];
+
+  brandSelect.innerHTML = `<option value="All">All</option>`;
+  brands.forEach(b => {
+    brandSelect.innerHTML += `<option value="${b}">${b}</option>`;
+  });
+}
+
+
+searchInput?.addEventListener("input", () => {
+  const keyword = searchInput.value.toLowerCase();
+  filteredProducts = allProducts.filter(p =>
     p.title.toLowerCase().includes(keyword)
   );
+
+  page = 1;
+  renderUI();
+});
+
+
+categorySelect?.addEventListener("change", applyFilters);
+brandSelect?.addEventListener("change", applyFilters);
+priceSelect?.addEventListener("change", applyFilters);
+offerSelect?.addEventListener("change", applyFilters);
+
+function applyFilters() {
+  const cat = categorySelect.value;
+  const brand = brandSelect.value;
+  const price = priceSelect.value;
+  const offer = offerSelect.value;
+
+  filteredProducts = allProducts.filter(p => {
+    let ok = true;
+
+    if (cat !== "All") ok = ok && p.category.toLowerCase() === cat.toLowerCase();
+    if (brand !== "All") ok = ok && p.brand.toLowerCase() === brand.toLowerCase();
+
+    if (price !== "All") {
+      const [min, max] = price.split("-").map(Number);
+      ok = ok && p.price >= min && p.price <= max;
+    }
+
+    if (offer !== "All") {
+      ok = ok && Math.floor(p.discountPercentage) == Number(offer);
+    }
+
+    return ok;
+  });
+
   page = 1;
   renderUI();
 }
 
-searchInput?.addEventListener("input", applySearch);
-searchBtn?.addEventListener("click", applySearch);
-
-
-function openProduct(id) {
-  const product = allProducts.find(p => p.id === id);
-  localStorage.setItem("selectedProduct", JSON.stringify(product));
-  window.location.href = "product.html";
-}
-
-
-if (productDetails) {
-  let product = JSON.parse(localStorage.getItem("selectedProduct"));
-
-  if (product) {
-    let discount = Math.floor(Math.random() * 40) + 10;  // 10–50% random discount
-    let oldPrice = Math.floor(product.price + (product.price * discount) / 100);
-
-    productDetails.innerHTML = `
-      <div class="col-md-5">
-        <img src="${product.thumbnail}" class="img-fluid main-img mb-3" id="mainImage">
-        
-        <div class="d-flex gap-2">
-          ${product.images
-            .map(
-              (img) =>
-                `<img src="${img}" onclick="document.getElementById('mainImage').src='${img}'" 
-                 class="border p-1" style="width:70px; height:70px; cursor:pointer;">`
-            )
-            .join("")}
-        </div>
-      </div>
-
-      <div class="col-md-7">
-        <h2>${product.title}</h2>
-        <p class="text-muted">Brand: <b>${product.brand}</b></p>
-
-        <h3 class="text-success mb-0">₹${product.price}</h3>
-        <p class="text-danger">
-          <del>₹${oldPrice}</del> <b>${discount}% Off</b>
-        </p>
-
-        <p><b>Rating:</b> ⭐ ${product.rating}</p>
-
-        <p class="text-primary"><b>Stock:</b> ${product.stock > 20 ? "In Stock ✔" : "Few Left ⚠"}</p>
-
-        <h5 class="mt-3">Available Offers:</h5>
-        <ul>
-          <li>🔥 Special Price: Get extra ₹100 off</li>
-          <li>💳 Bank Offer: 10% discount on UPI & Cards</li>
-          <li>🚚 Free Delivery on orders above ₹499</li>
-          <li>↩ Easy 7-day Return Policy</li>
-        </ul>
-
-        <button class="btn btn-primary px-4" onclick="addToCart(${product.id})">Add To Cart</button>
-        <button class="btn btn-success px-4" onclick="buyNow(${product.id})">Buy Now</button>
-
-        <hr>
-
-        <h4>Description</h4>
-        <p>${product.description}</p>
-
-        <h5 class="mt-3">Shipping</h5>
-        <p>🚀 Delivered within 3-5 Days</p>
-      </div>
-    `;
-  }
-}
-
 
 function displayProducts() {
+  if (!productList) return;
+
   productList.innerHTML = "";
 
   const start = (page - 1) * limit;
   const end = start + limit;
-  const items = filteredProducts.slice(start, end);
 
-  items.forEach((product) => {
+  filteredProducts.slice(start, end).forEach(product => {
     productList.innerHTML += `
       <div class="col-md-3 mb-4">
-        <div class="pro-card" style="cursor:pointer;" onclick="openProduct(${product.id})">
-
+        <div class="pro-card" onclick="openProduct(${product.id})">
           <img src="${product.thumbnail}" class="pro-img">
+          <h5>${product.title}</h5>
+          <span class="new-price">₹${product.price}</span>
 
-          <h5 class="pro-title">${product.title}</h5>
-
-          <div class="price-box">
-            <span class="new-price">₹${product.price}</span>
-          </div>
-
-          <button class="btn btn-primary w-100 mt-2" 
+          <button class="btn btn-primary w-100 mt-2"
             onclick="event.stopPropagation(); addToCart(${product.id})">
             Add to Cart
           </button>
         </div>
-      </div>`;
+      </div>
+    `;
   });
 }
 
 
 function setupPagination() {
+  if (!pagination) return;
+
   pagination.innerHTML = "";
-  const pages = Math.ceil(filteredProducts.length / limit);
+  let pages = Math.ceil(filteredProducts.length / limit);
 
   for (let i = 1; i <= pages; i++) {
     pagination.innerHTML += `
       <li class="page-item ${i === page ? "active" : ""}">
         <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
-      </li>`;
+      </li>
+    `;
   }
 }
 
@@ -156,18 +183,24 @@ function changePage(p) {
 }
 
 
+function openProduct(id) {
+  window.location.href = `product.html?id=${id}`;
+}
+
+
 function addToCart(id) {
-  const product = allProducts.find((p) => p.id === id);
-  const existing = cart.find((item) => item.id === id);
+  const productInShop = allProducts.find(p => p.id === id);
+
+  let existing = cart.find(c => c.id === id);
 
   if (existing) {
     existing.qty++;
   } else {
     cart.push({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      qty: 1,
+      id: id,
+      title: productInShop?.title || "Product",
+      price: productInShop?.price || 0,
+      qty: 1
     });
   }
 
@@ -181,7 +214,7 @@ function saveCart() {
 }
 
 function increaseQty(id) {
-  const item = cart.find((c) => c.id === id);
+  let item = cart.find(c => c.id === id);
   item.qty++;
   saveCart();
   renderCart();
@@ -189,13 +222,10 @@ function increaseQty(id) {
 }
 
 function decreaseQty(id) {
-  const item = cart.find((c) => c.id === id);
+  let item = cart.find(c => c.id === id);
 
-  if (item.qty > 1) {
-    item.qty--;
-  } else {
-    cart = cart.filter((c) => c.id !== id);
-  }
+  if (item.qty > 1) item.qty--;
+  else cart = cart.filter(c => c.id !== id);
 
   saveCart();
   renderCart();
@@ -203,22 +233,21 @@ function decreaseQty(id) {
 }
 
 function removeItem(id) {
-  cart = cart.filter((item) => item.id !== id);
+  cart = cart.filter(c => c.id !== id);
   saveCart();
   renderCart();
   updateCartCount();
 }
 
-// RENDER CART
 function renderCart() {
   if (!cartBody) return;
 
   cartBody.innerHTML = "";
   let total = 0;
 
-  cart.forEach((item) => {
-    const itemTotal = item.price * item.qty;
-    total += itemTotal;
+  cart.forEach(item => {
+    let t = item.qty * item.price;
+    total += t;
 
     cartBody.innerHTML += `
       <tr>
@@ -229,54 +258,81 @@ function renderCart() {
           <button class="btn btn-sm btn-secondary" onclick="increaseQty(${item.id})">+</button>
         </td>
         <td>₹${item.price}</td>
-        <td>₹${itemTotal}</td>
-        <td>
-          <button class="btn btn-danger btn-sm" onclick="removeItem(${item.id})">Remove</button>
-        </td>
-      </tr>`;
+        <td>₹${t}</td>
+        <td><button class="btn btn-danger btn-sm" onclick="removeItem(${item.id})">Remove</button></td>
+      </tr>
+    `;
   });
 
-  cartTotal.innerText = total;
+  cartTotal && (cartTotal.innerText = total);
 }
-
 
 function updateCartCount() {
-  let count = 0;
-  cart.forEach((item) => (count += item.qty));
-  cartCount.innerText = count;
+  cartCount && (cartCount.innerText = cart.length);
 }
-
 
 function openCart() {
-  new bootstrap.Offcanvas(document.getElementById("offcanvas")).show();
+  let off = document.getElementById("offcanvas");
+  if (off) new bootstrap.Offcanvas(off).show();
 }
 
+
+function loadSingleProduct() {
+  const box = document.getElementById("productDetails");
+  if (!box) return;
+
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id");
+
+  if (!id) return;
+
+  fetch(`https://dummyjson.com/products/${id}`)
+    .then(res => res.json())
+    .then(p => showProductDetails(p));
+}
+
+function showProductDetails(p) {
+  const box = document.getElementById("productDetails");
+
+  box.innerHTML = `
+  <div class="row">
+    <div class="col-md-6">
+      <img src="${p.thumbnail}" class="img-fluid rounded shadow-sm mb-3 main-img">
+
+      <div class="d-flex gap-2">
+        ${p.images.slice(0,3).map(img => `
+          <img src="${img}" style="width:70px;height:70px;object-fit:cover;border:1px solid #ddd;padding:3px;cursor:pointer"
+          onclick="document.querySelector('.main-img').src='${img}'">
+        `).join("")}
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h2>${p.title}</h2>
+      <p class="text-muted">Brand: ${p.brand}</p>
+
+      <h3 class="text-success">₹${p.price}</h3>
+
+      <p>
+        <span class="text-danger">${Math.floor(p.discountPercentage)}% Off</span>
+      </p>
+
+      <div class="d-flex gap-3 mt-3">
+        <button class="btn btn-primary" onclick="addToCart(${p.id})">Add To Cart</button>
+        <button class="btn btn-success" onclick="buyNow(${p.id})">Buy Now</button>
+      </div>
+
+      <hr>
+
+      <h5>Description</h5>
+      <p>${p.description}</p>
+    </div>
+  </div>
+  `;
+}
 
 function buyNow(id) {
-  if (!isLoggedIn()) {
-    window.location.href = "login.html";
-    return;
-  }
-
-  const product = allProducts.find((p) => p.id === id);
-  localStorage.setItem("buyNowProduct", JSON.stringify(product));
-  window.location.href = "checkout.html";
-}
-
-
-function checkoutCart() {
-  if (!isLoggedIn()) {
-    window.location.href = "login.html";
-    return;
-  }
-
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
-
-  localStorage.setItem("order", JSON.stringify(cart));
-  window.location.href = "checkout.html";
+  window.location.href = `checkout.html?id=${id}`;
 }
 
 
@@ -287,3 +343,71 @@ function renderUI() {
 
 renderCart();
 updateCartCount();
+loadSingleProduct();
+
+
+
+
+
+
+var swiper = new Swiper(".swiper1", {
+    slidesPerView: 5,
+    spaceBetween: 25,
+    loop: true,
+    speed: 700,
+
+    autoplay: {
+        delay: 1800,
+        disableOnInteraction: false,
+    },
+
+    pagination: {
+        el: ".swiper-pagination1",
+        clickable: true,
+    },
+
+    navigation: {
+        nextEl: ".swiper-button-next1",
+        prevEl: ".swiper-button-prev1",
+    },
+
+    breakpoints: {
+        320: { slidesPerView: 1 },
+        480: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        992: { slidesPerView: 4 },
+        1200: { slidesPerView: 5 }
+    }
+});
+
+
+
+
+
+var swiper = new Swiper(".swiper2", {
+    slidesPerView: 5,
+    spaceBetween: 25,
+    loop: true,
+    speed: 700,
+
+    autoplay:false,
+    
+
+    pagination: {
+        el: ".swiper-pagination1",
+        clickable: true,
+    },
+
+    navigation: {
+        nextEl: ".swiper-button-next1",
+        prevEl: ".swiper-button-prev1",
+    },
+
+    breakpoints: {
+        320: { slidesPerView: 1 },
+        480: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        992: { slidesPerView: 4 },
+        1200: { slidesPerView: 5 }
+    }
+});

@@ -1,79 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
 
-  <link rel="stylesheet" href="./bootstrap.min.css" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css">
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="./index.html">MyShop</a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPremium">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarPremium">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" href="shop.html">Shop</a>
-          </li>
-
-          <button class="cart-btn" onclick="openCart()">
-            🛒 Cart <span id="cartCount">0</span>
-          </button>
-        </ul>
-
-        <form class="d-flex" role="search" onsubmit="return false;">
-          <input class="form-control me-2" id="searchInput" type="search" placeholder="Search Product" />
-          <button class="btn btn-outline-success" id="searchBtn">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-
-  <!-- LEFT CART CANVAS -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasLabel">My Cart</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-    </div>
-
-    <div class="offcanvas-body">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Qty</th>
-            <th>Price</th>
-            <th>Total</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="cartBody"></tbody>
-      </table>
-
-      <h5>Total Amount: <span id="cartTotal">0</span></h5>
-      <button class="btn btn-success w-100" onclick="checkoutCart()">Buy Now</button>
-    </div>
+<nav class="navbar navbar-expand-lg bg-light shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">MyShop</a>
+    <a href="/shop.html">Shop</a>
+    <a href="shop.html" class="btn btn-outline-primary">← Back to Shop</a>
   </div>
+</nav>
 
-  <div class="container mt-4">
-    <div class="row" id="productDetails"></div>
-  </div>
+<div class="container mt-5">
+  <div id="productDetails"></div>
+</div>
 
-  <nav class="mt-4">
-    <ul class="pagination justify-content-center" id="pagination"></ul>
-  </nav>
+<script src="./bootstrap.bundle.js"></script>
+<script src="./app.js"></script>
 
-  <script src="/project/E-commerce/bootstrap.bundle.js"></script>
-  <script src="/project/E-commerce/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 </body>
-
 </html>
