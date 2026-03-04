@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Financial Calculator</h2>
+
+    
+    <div class="box">
+      <h3>Simple Interest</h3>
+      <input id="p" type="number" placeholder="Principal Amount">
+      <input id="r" type="number" placeholder="Rate (%)">
+      <input id="t" type="number" placeholder="Time (Years)">
+      <button onclick="simpleInterest()">Calculate</button>
+      <p id="siResult"></p>
+    </div>
+
+    
+    <div class="box">
+      <h3>EMI Calculator</h3>
+      <input id="loan" type="number" placeholder="Loan Amount">
+      <input id="rate" type="number" placeholder="Interest Rate (%)">
+      <input id="months" type="number" placeholder="Months">
+      <button onclick="emiCalc()">Calculate EMI</button>
+      <p id="emiResult"></p>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

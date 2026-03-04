@@ -1,0 +1,96 @@
+/* -------- GLOBAL -------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #eef3ff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* -------- CONTAINER -------- */
+.container {
+  width: 100%;
+  max-width: 430px;
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px rgba(0, 40, 120, 0.15);
+  border: 1px solid rgba(0, 76, 255, 0.1);
+}
+
+/* -------- TITLE -------- */
+.container h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #004cff;
+  margin-bottom: 22px;
+}
+
+/* -------- BOX -------- */
+.box {
+  background: #f7f9ff;
+  padding: 20px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,76,255,0.1);
+}
+
+.box h3 {
+  color: #003bb3;
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+/* -------- INPUT -------- */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #aac4ff;
+  background: #ffffff;
+  outline: none;
+  font-size: 15px;
+  color: #003366;
+}
+
+input::placeholder {
+  color: #6c86c4;
+}
+
+/* -------- BUTTON -------- */
+button {
+  width: 100%;
+  padding: 12px;
+  background: #004cff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: .3s;
+  box-shadow: 0px 4px 12px rgba(0, 76, 255, 0.3);
+}
+
+button:hover {
+  background: #003bd1;
+  transform: translateY(-2px);
+}
+
+/* -------- RESULT -------- */
+p {
+  color: #003366;
+  font-weight: 500;
+  margin-top: 10px;
+  font-size: 16px;
+}

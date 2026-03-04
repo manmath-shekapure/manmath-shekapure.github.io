@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyShop - Home</title>
+
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="./index.html">MyShop</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPremium">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarPremium">
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="shop.html">Shop</a>
+          </li>
+
+
+        </ul>
+        <a href="login.html" class="nav-link">Login</a>
+
+      </div>
+    </div>
+  </nav>
+
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel"
+    class="col-12 col-sm-3 col-md-6 col-lg-12">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./imgs/5517487.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./imgs/1764.jpg" class="d-block w-100" alt="...">
+      </div>
+
+    </div>
+  </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+
+
+
+<div class="cat-grid">
+
+    <div class="cat-box" onclick="loadProduct('beauty'); return false;">
+      <img src="./imgs/beauty icon.webp">
+      <p>Beauty</p>
+    </div>
+
+    <div class="cat-box" onclick="loadProduct('fragrances'); return false;">
+      <img src="./imgs/perfume.icon.jpg">
+      <p>Fragrances</p>
+    </div>
+
+    <div class="cat-box" onclick="loadProduct('furniture'); return false;">
+      <img src="./imgs/furniture icon.webp">
+      <p>Furniture</p>
+    </div>
+
+    <div class="cat-box" onclick="loadProduct('groceries'); return false;">
+      <img src="./imgs/gloceries img.webp">
+      <p>Groceries</p>
+    </div>
+
+    <div class="cat-box" onclick="loadProduct('home-decoration'); return false;">
+      <img src="./imgs/hoome decoration.jpg">
+      <p>Home Decoration</p>
+    </div>
+
+    <div class="cat-box" onclick="loadProduct('kitchen-accessories'); return false;">
+      <img src="./imgs/gloceries img.webp">
+      <p>Kitchen Accessories</p>
+    </div>
+
+    <div class="cat-box" onclick="loadProduct('laptops'); return false;">
+      <img src="./imgs/laptop-img.jpg">
+      <p>Laptops</p>
+    </div>
+
+    <div class="cat-box" onclick="loadProduct('mens-shirts'); return false;">
+      <img src="./imgs/t-shirt img.jpg">
+      <p>Men's Shirts</p>
+    </div>
+
+    <div class="cat-box" onclick="loadProduct('mens-watches'); return false;">
+      <img src="./imgs/watch img.jpg">
+      <p>Men's Watches</p>
+    </div>
+
+
+</div>
+    
+<div class="top-swiper">
+  <h4>  Men's Section</h4>
+</div>
+
+<div class="swiper swiper1">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide card" onclick="loadProduct('Mens Shirt'); return false;">
+            <img src="./imgs/thumbnail tshirt img.webp" class="card-img-top">
+            <h5><b>Tshirt</b></h5>
+           
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct('Mens Watches'); return false;">
+            <img src="./imgs/thumbnail men's watch.webp" class="card-img-top">
+            <h5><b>Watches</b></h5>
+          
+        </div>
+
+        <div class="swiper-slide card"onclick="loadProduct('Mens Shoes'); return false;">
+            <img src="./imgs/thumbnail men's shoes.webp" class="card-img-top">
+            <h5><b>shoes</b></h5>
+            
+        </div>
+
+        <div class="swiper-slide card"onclick="loadProduct('Sunglasses'); return false;">
+            <img src="./imgs/thumbnail men's sunglass.webp" class="card-img-top">
+            <h5><b>Gogels</b></h5>
+            
+        </div>
+
+        <div class="swiper-slide card"onclick="loadProduct('Fragrances'); return false;">
+            <img src="./imgs/perfume.icon.jpg" class="card-img-top">
+            <h5><b>perfume</b></h5>
+          
+        </div>
+
+        <div class="swiper-slide card"onclick="loadProduct('Mobile Accessorise'); return false;">
+            <img src="./imgs/thumbnail mens'headphone.webp" class="card-img-top">
+            <h5><b>Headphone</b></h5>
+        
+        </div>
+
+        <div class="swiper-slide card"onclick="loadProduct('Motorcycle'); return false;">
+            <img src="./imgs/thumbnail men's motercycle.webp" class="card-img-top">
+            <h5><b>Bike</b></h5>
+          
+        </div>
+
+        <div class="swiper-slide card"onclick="loadProduct('Laptops'); return false;">
+            <img src="./imgs/laptop-img.jpg" class="card-img-top">
+            <h5><b>Laptops</b></h5>
+       
+        </div>
+
+        <div class="swiper-slide card"onclick="loadProduct('Mobile'); return false;">
+            <img src="./imgs/thumbnail mens mobile.webp" class="card-img-top">
+            <h5><b>mobile</b></h5>
+          
+        </div>
+
+        <div class="swiper-slide card"onclick="loadProduct('Skin care'); return false;">
+            <img src="./imgs/thumbnail mens  skin care.webp" class="card-img-top">
+            <h5><b>Skin Care</b></h5>
+            
+        </div>
+
+        <div class="swiper-slide card"onclick="loadProduct('Mens Shirt'); return false;">
+            <img src="./imgs/thumbnail mens second shirt.webp" class="card-img-top">
+            <h5><b>Shirt</b></h5>
+          
+        </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="swiper-pagination swiper-pagination1"></div>
+
+    <!-- Navigation Buttons -->
+    <div class="swiper-button-prev swiper-button-prev1"></div>
+    <div class="swiper-button-next swiper-button-next1"></div>
+
+</div>
+
+
+     
+<div class="top-swiper">
+  <h4>  women's Section</h4>
+</div>
+
+<div class="swiper swiper2">
+
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide card" onclick="loadProduct('Womens Bags'); return false;">
+            <img src="./imgs/thumbnail womens bag.webp" class="card-img-top">
+            <h5><b>Bags</b></h5>
+          
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct('Womens Dresses'); return false;">
+            <img src="./imgs/thumbnail womens dress.webp" class="card-img-top">
+            <h5><b>Dress</b></h5>
+          
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct('Womens Jewellery'); return false;">
+            <img src="./imgs/thumbnail womens jwalary.webp" class="card-img-top">
+            <h5><b>Jwalary</b></h5>
+            
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct('Womens Dress'); return false;">
+            <img src="./imgs/thumbnail womens shoes.webp" class="card-img-top">
+            <h5><b>shoes</b></h5>
+           
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct(' Tops'); return false;">
+            <img src="./imgs/thumbnail womens tops.webp" class="card-img-top">
+            <h5><b>Tops</b></h5>
+         
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct('Womens Watch'); return false;">
+            <img src="./imgs/thumbnail womens watch.webp" class="card-img-top">
+            <h5><b>Watches</b></h5>
+           
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct('Skin Care'); return false;">
+            <img src="./imgs/thumbnail womens skin care.webp" class="card-img-top">
+            <h5><b>skin Care</b></h5>
+           
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct('furniture'); return false;">
+            <img src="./imgs/perfume.icon.jpg" class="card-img-top">
+            <h5><b>perfume</b></h5>
+            
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct('lipstick'); return false;">
+            <img src="./imgs/thumbnail womens red lipstick.webp" class="card-img-top">
+            <h5><b>Red lipstick</b></h5>
+            
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct('Nail Polish'); return false;">
+            <img src="./imgs/thumbnail womens nail polish.webp" class="card-img-top">
+            <h5><b>Nail polish </b></h5>
+            
+        </div>
+
+        <div class="swiper-slide card" onclick="loadProduct('Canister'); return false;">
+            <img src="./imgs/thumbnail womens canister.webp" class="card-img-top">
+            <h5><b>Canister</b></h5>
+          
+        </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="swiper-pagination swiper-pagination1"></div>
+
+    <!-- Navigation Buttons -->
+    <div class="swiper-button-prev swiper-button-prev1"></div>
+    <div class="swiper-button-next swiper-button-next1"></div>
+
+</div>
+
+  
+<footer style="background:#032541; color:white; padding:50px 0;">
+
+  <div class="container">
+
+    <!-- Join Section -->
+    <div style="background:#6c1ed6; padding:40px; border-radius:10px; margin-bottom:50px;">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Join MyShop Today</h2>
+          <p>
+            Create your account to track your orders, save your wishlist, 
+            get exclusive offers, and receive personalized product recommendations.
+          </p>
+          <button style="padding:8px 18px; background:white; border:none; border-radius:4px; cursor:pointer;">
+            Sign Up
+          </button>
+        </div>
+
+        <div class="col-md-6">
+          <ul style="list-style: none; padding-left: 10px;">
+            <li>• Get exclusive discounts</li>
+            <li>• Maintain your wishlist</li>
+            <li>• Get order updates easily</li>
+            <li>• Track your purchases</li>
+            <li>• Access early sale events</li>
+            <li>• Faster checkout experience</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Links -->
+    <div class="row text-center text-md-start">
+
+      <div class="col-md-3 mb-4">
+        <img src="img/logo.png" width="60px">
+        <br><br>
+        <button style="padding:8px 18px; background:white; color:black; border:none; border-radius:4px;">
+          Join the Community
+        </button>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5>The Basics</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" style="color:white;">About Us</a></li>
+          <li><a href="#" style="color:white;">Contact</a></li>
+          <li><a href="#" style="color:white;">Shipping Info</a></li>
+          <li><a href="#" style="color:white;">Returns</a></li>
+          <li><a href="#" style="color:white;">Payment Options</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5>Shop</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" style="color:white;">Men's Fashion</a></li>
+          <li><a href="#" style="color:white;">Women's Fashion</a></li>
+          <li><a href="#" style="color:white;">Electronics</a></li>
+          <li><a href="#" style="color:white;">Grocery</a></li>
+          <li><a href="#" style="color:white;">Appliances</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5>Legal</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" style="color:white;">Terms & Conditions</a></li>
+          <li><a href="#" style="color:white;">Privacy Policy</a></li>
+          <li><a href="#" style="color:white;">Refund Policy</a></li>
+          <li><a href="#" style="color:white;">Cookies Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-4">
+      © 2026 MyShop. All Rights Reserved.
+    </div>
+
+  </div>
+</footer>
+  <script>
+    function loadProduct(category) {
+      localStorage.setItem("selectedCategory", category);
+      window.location.href = "shop.html";
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script src="./bootstrap.bundle.js"></script>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        * {
+            padding: 0%;
+            margin: 0%;
+        }
+
+        .bag {
+            background: rgb(34, 193, 195);
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid bag">
+        <h1><strong>Add to Cart System</strong></h1>
+        <div class="row">
+            <div class="col-md-8 d-print-none">
+                <div class="row row-cols-1 row-col-md-2 g-4 p-5 d-print-none">
+                    <div class="col  col-md-3 w-25">
+                        <div class="card">
+                            <img src="img/Sam galaxy s23 Ultra.jpg" class="card-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Sam galaxy s23 </h5>
+                                <p class="card-text">Price = <strong>45,000</strong> <i>only</i></p>
+                                <button class="btn btn-primary" data-id="p1" data-price="15000"
+                                    data-name="Sam galaxy s23" onclick="addCart(event)">Add to
+                                    cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-12 col-md-3 w-25">
+                        <div class="card">
+                            <img src="img/3215461.jpg" class="card-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">i Phone 12</h5>
+                                <p class="card-text">Price =<strong>8,000</strong> <i>only</i></p>
+                                <button class="btn btn-primary" data-id="p2" data-price="8000" data-name="i phone 12"
+                                    onclick="addCart(event)">Add to
+                                    cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-12 col-md-3 w-25">
+                        <div class="card">
+                            <img src="img/phone_14_01.jpg" class="card-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">i phone 13</h5>
+                                <p class="card-text">Price =<strong>9,000</strong> <i>only</i></p>
+                                <button class="btn btn-primary add-to-cart" data-id="p3" data-price="9000"
+                                    data-name="i phone 13" onclick="addCart(event)">Add to
+                                    cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-12 col-md-3 w-25">
+                        <div class="card">
+                            <img src="img/oppo reno 10 pro+.webp" class="card-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">oppo reno 10 pro+</h5>
+                                <p class="card-text">Price = <strong>10,000</strong> <i>only</i></p>
+                                <button class="btn btn-primary add-to-cart" data-id="p4" data-name="oppo reno 10 pro+"
+                                    data-price="10000" onclick="addCart(event)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-col-md-2 g-4 p-5">
+                    <div class="col  col-md-3 w-25">
+                        <div class="card">
+                            <img src="img/smartphone-balancing-with-pink-background.jpg" class="card-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">i phone_14_01</h5>
+                                <p class="card-text">Price = <strong>15,000</strong> <i>only</i></p>
+                                <button class="btn btn-primary" data-id="p5" data-price="15000" data-name="i phone 14"
+                                    onclick="addCart(event)">Add to
+                                    cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-12 col-md-3 w-25">
+                        <div class="card">
+                            <img src="img/sum galaxy.jpg" class="card-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">SM Galaxy A53</h5>
+                                <p class="card-text">Price =<strong>25,000</strong> <i>only</i></p>
+                                <button class="btn btn-primary" data-id="p6" data-price="8000" data-name="SM Galaxy A53"
+                                    onclick="addCart(event)">Add to
+                                    cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-12 col-md-3 w-25">
+                        <div class="card">
+                            <img src="img/oppoA17.jpg" class="card-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Oppo A17</h5>
+                                <p class="card-text">Price =<strong>15,000</strong> <i>only</i></p>
+                                <button class="btn btn-primary add-to-cart" data-id="p7" data-price="9000"
+                                    data-name="oppo A17" onclick="addCart(event)">Add to
+                                    cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-12 col-md-3 w-25">
+                        <div class="card">
+                            <img src="img/oneplus.png" class="card-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Oneplus</h5>
+                                <p class="card-text">Price = <strong>40,000</strong> <i>only</i></p>
+                                <button class="btn btn-primary add-to-cart" data-id="p8" data-name="Oneplus"
+                                    data-price="10000" onclick="addCart(event)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 border bg-light p-4 ">
+                <div class="row  g-2 bag p-3 shadow-lg p-3 mb-5">
+                    <h1 class="mt-2">Shopping Cart</h1>
+                    <table class="table cart-table" border="1">
+                        <thead>
+                            <!-- <tr>
+                                <th>Name</th>
+                                <th>ID</th>
+                                <th>Price</th>
+                                <th>Total price</th>
+                            </tr> -->
+                        </thead>
+                        <tbody id="cart-items">
+                            <tr id="productCart">
+                                <!-- Cart items will be displayed here -->
+                            </tr>
+                        </tbody>
+
+
+                    </table>
+                    <tfoot>
+                        <h2>
+                            Total Price
+                        </h2>
+                    </tfoot>
+                    <button onclick="bill()" class="btn btn-primary">Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
