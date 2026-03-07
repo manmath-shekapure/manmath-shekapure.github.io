@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+
+ body{
+    background:#f1f3f6;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.checkout-container{
+    max-width:1000px;
+    margin:40px auto;
+}
+
+.checkout-card{
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.product-box{
+    display:flex;
+    gap:25px;
+}
+
+.product-img{
+    width:250px;
+    height:250px;
+    object-fit:cover;
+    border-radius:8px;
+    border:1px solid #ddd;
+}
+
+.product-title{
+    font-size:24px;
+    font-weight:600;
+}
+
+.product-brand{
+    color:#777;
+    margin-bottom:10px;
+}
+
+.product-price{
+    font-size:26px;
+    font-weight:bold;
+    color:#388e3c;
+}
+
+.product-offer{
+    color:#e53935;
+    font-weight:600;
+}
+
+.order-box{
+    margin-top:25px;
+    padding:20px;
+    background:#fafafa;
+    border-radius:8px;
+}
+
+.total-price{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.place-order-btn{
+    margin-top:15px;
+    width:100%;
+    padding:12px;
+    font-size:18px;
+    border-radius:8px;
+}
+
+.product-desc{
+    margin-top:15px;
+    color:#555;
+}
+    </style>
+
+    <script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+fetch(`https://dummyjson.com/products/${id}`)
+.then(res => res.json())
+.then(p => {
+
+document.getElementById("productImage").src = p.thumbnail;
+document.getElementById("productName").innerText = p.title;
+document.getElementById("productBrand").innerText = "Brand: " + p.brand;
+document.getElementById("productPrice").innerText = "₹" + p.price;
+document.getElementById("productOffer").innerText = Math.floor(p.discountPercentage) + "% OFF";
+document.getElementById("productDesc").innerText = p.description;
+document.getElementById("totalPrice").innerText = "₹" + p.price;
+
+});
+</script>
+<div class="checkout-container">
+
+<div class="checkout-card">
+
+<h2 class="mb-4">Order Summary</h2>
+
+<div class="product-box">
+
+<img id="productImage" class="product-img">
+
+<div>
+
+<h3 id="productName" class="product-title"></h3>
+
+<p id="productBrand" class="product-brand"></p>
+
+<p class="product-price" id="productPrice"></p>
+
+<p class="product-offer" id="productOffer"></p>
+
+<p id="productDesc" class="product-desc"></p>
+
+</div>
+
+</div>
+
+<div class="order-box">
+
+<p class="total-price">Total: <span id="totalPrice"></span></p>
+
+<button class="btn btn-success place-order-btn">
+Place Order
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

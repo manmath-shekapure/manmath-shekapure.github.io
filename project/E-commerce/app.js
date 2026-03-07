@@ -19,7 +19,7 @@ let filteredProducts = [];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let page = 1;
-let limit = 12;
+let limit = 10;
 
 
 filterButtons.forEach(btn => {
@@ -65,6 +65,7 @@ fetch("https://dummyjson.com/products/categories")
         <option value="${cat.slug}">${cat.name}</option>
       `;
     });
+    
   });
 
 
@@ -72,6 +73,7 @@ fetch("https://dummyjson.com/products?limit=0")
   .then(res => res.json())
   .then(data => {
     allProducts = data.products;
+    
     filteredProducts = [...allProducts];
     renderUI();
 
@@ -162,6 +164,7 @@ function displayProducts() {
 }
 
 
+
 function setupPagination() {
   if (!pagination) return;
 
@@ -189,6 +192,7 @@ function openProduct(id) {
 
 
 function addToCart(id) {
+  console.log(allProducts,"all  products")
   const productInShop = allProducts.find(p => p.id === id);
 
   let existing = cart.find(c => c.id === id);
@@ -248,10 +252,9 @@ function renderCart() {
   cart.forEach(item => {
     let t = item.qty * item.price;
     total += t;
-
     cartBody.innerHTML += `
       <tr>
-        <td>${item.title}</td>
+        <td>${item.title}</td> 
         <td>
           <button class="btn btn-sm btn-secondary" onclick="decreaseQty(${item.id})">-</button>
           <span class="mx-2">${item.qty}</span>
@@ -335,7 +338,6 @@ function buyNow(id) {
   window.location.href = `checkout.html?id=${id}`;
 }
 
-
 function renderUI() {
   displayProducts();
   setupPagination();
@@ -411,3 +413,6 @@ var swiper = new Swiper(".swiper2", {
         1200: { slidesPerView: 5 }
     }
 });
+
+
+

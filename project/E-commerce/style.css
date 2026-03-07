@@ -132,13 +132,10 @@
     font-size: 14px;
 }
 
-/* Swiper navigation buttons */
 
-
-/* Top Swiper - Men's Title Section */
 .top-swiper {
     width: 100%;
-    background: #f5f5f5;          /* light grey background */
+    background: #f5f5f5;          
     padding: 18px 20px;
     border-radius: 10px;
     margin: 30px 0 15px 0;
@@ -148,7 +145,7 @@
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
-/* Title text */
+
 .top-swiper h4 {
     font-size: 22px;
     font-weight: 700;
@@ -159,7 +156,6 @@
     padding-left: 40rem;
 }
 
-/* Optional glow hover effect */
 .top-swiper:hover {
     background: #ededed;
     transition: 0.3s ease-in-out;
@@ -177,7 +173,7 @@
     color: #ff0077;
 }
 
-/* Round Pagination Dots */
+
 .swiper-pagination1 .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
@@ -198,7 +194,7 @@
 .card h5 {
     margin-top: 10px;
 }
-/* ---------------- PRODUCT CARD ---------------- */
+
 .pro-card {
     background: #ffffff;
     padding: 15px;
@@ -239,7 +235,7 @@
 }
 
 
-/* ---------------- CART BUTTON ---------------- */
+
 .cart-btn {
     background: linear-gradient(45deg, #7b00ff, #ff0099);
     color: #fff;
